@@ -1,9 +1,9 @@
-const A = [
+let A = [
     [2,3,1],
     [9,1,3],
     [10,2,7]
 ];
-const B = [
+let B = [
     [11,1,9],
     [6,2,4],
     [3,3,7]
@@ -195,7 +195,4 @@ function transpon(a) {
             console.log('=============');
         }
 }
-
-// export { stack, A, B};
-
-// transpon(aSort) ;
+// transpon(aSort);
