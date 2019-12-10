@@ -191,15 +191,43 @@
       <created>1575996132902</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
+<<<<<<< HEAD
       <updated>1575996132902</updated>
       <workItem from="1575996134034" duration="4230000" />
       <workItem from="1576053745534" duration="11724000" />
       <workItem from="1576081790754" duration="573000" />
+=======
+      <updated>1572011248304</updated>
+      <workItem from="1572011249371" duration="10345000" />
+      <workItem from="1572255438605" duration="16160000" />
+      <workItem from="1572539632704" duration="2656000" />
+      <workItem from="1572610956565" duration="42000" />
+      <workItem from="1572618165989" duration="4987000" />
+      <workItem from="1573828863224" duration="1333000" />
+      <workItem from="1574068151269" duration="27000" />
+      <workItem from="1574083769404" duration="655000" />
+      <workItem from="1574249681218" duration="3634000" />
+      <workItem from="1574259398119" duration="5058000" />
+      <workItem from="1574334173018" duration="6202000" />
+      <workItem from="1574347632463" duration="7066000" />
+      <workItem from="1574356104142" duration="880000" />
+      <workItem from="1574410262989" duration="5465000" />
+      <workItem from="1574853977365" duration="599000" />
+      <workItem from="1575052428766" duration="25000" />
+      <workItem from="1575633501113" duration="14333000" />
+      <workItem from="1575882426655" duration="25428000" />
+      <workItem from="1575972303941" duration="5403000" />
+      <workItem from="1575989834605" duration="5297000" />
+>>>>>>> first
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="16527000" />
+=======
+    <option name="totallyTimeSpent" value="115595000" />
+>>>>>>> first
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="25" width="1922" height="1056" extended-state="6" />
