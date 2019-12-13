@@ -11,73 +11,66 @@ const B = [
     [3,3,7]
 ];
 
-// function stack(a,b) {
-//     let aNumRow = a.length, aNumCol = a[0].length;
-//     let bNumRow = b.length, bNumCol = b[0].length;
-//     console.log(aNumCol,  bNumRow);
-//     let m = new Array(aNumRow);
-//     if (aNumCol === bNumRow) {
-//         for (let r = 0; r < aNumRow; ++r) {
-//             m[r] = new Array(bNumCol);
-//             for (let c = 0; c < bNumCol; ++c) {
-//                 m[r][c] = 0;
-//                 for (let i = 0; i < aNumCol; ++i) {
-//                     m[r][c] += a[r][i] * b[i][c];
-//                 }
-//             }
-//         }
-//         return m;
-//     } else {
-//         alert('Count off rows matrix A must match with count of columns matrix B');
-//     }
-// }
-//
-//
-// let a = stack(A,B);
-// console.log(a);
+function svg(arr1,arr2){
 
-function svg(a,b) {
+    // create one mass from matrix
+
+    let a = arr1.reduce(function(flat, current) {
+        return flat.concat(current);
+    }, []);
+
+    let b = arr2.reduce(function(flat, current) {
+        return flat.concat(current);
+    }, []);
+
+    console.log(a);
+    console.log(b);
 
     let canvas = document.getElementById('canvas');
     let context =  canvas.getContext("2d");
-    canvas.style.height = '500px';
-    canvas.style.width = '500px';
+
+    //Built a  graph layout
+    // context.strokeStyle = "yellow";
+    // context.moveTo(50,500);
+    // context.lineTo(50,50);
+
+
+    //Build rectangle
+    canvas.style.height = '800px';
+    canvas.style.width = '800px';
     context.fillStyle = "black";
+    context.beginPath();
+    context.moveTo(400, 400);
     context.fillRect(10, 10, 500, 500);
-    let c = a.length;
-    let d = b.length;
-    for (let i = 0; i < c; i++){
-        for (let o = 0; o < c[i].length; o++){
-            let t = c[i][o];
-            console.log('t', t);
-        }
-    }
+    context.stroke();
 
-    for (let z = 0; z < d; z++) {
-        for (let q = 0; q < d[z].length; q++) {
-            let f = d[z][q];
-            console.log('f', f);
-        }
+    //Built picture with matrix
+    context.beginPath();
+    context.moveTo(100,500);
+    for (let i = 0; i < a.length && b.length; i++) {
+        // I multiple variable to 10 for better visibility
+        let x = a[i] * 10;
+        let y = b[i] * 10;
+        console.log('x = a[i]', x);
+        console.log('y = b[i]', y);
+        context.lineTo(x, y);
+        context.strokeStyle = "blue";
+        context.stroke();
     }
-
-    let svg = document.getElementById('svg');
-    svg.style.height ='400px';
-    svg.style.width ='400px';
-    let lines = document.getElementById('line');
-    lines.value = 'x1=10 y1=10 x2=100 y2=100';
-    lines.style.stroke = 'blue';
-    // svg.path = 'l 100 100 ';
-    // for(let i = 0 ; i < a.length; i++){
-    //     for (let j = 0; j < a[i].length; j++){
-    //         let x = a[i][j];
-    //         let y = Math.sin(x);
-    //         console.log(x);
-    //         console.log(typeof x);
-    //         console.log(y);
-    //         console.log(typeof y);
-    //         svg.style.stroke = 'blue';
-    //         svg.path = 'L' + x +' ' + y;
-    //     }
-    // }
 }
+
 svg(A,B);
+
+// svg.path = 'l 100 100 ';
+// for(let i = 0 ; i < a.length; i++){
+//     for (let j = 0; j < a[i].length; j++){
+//         let x = a[i][j];
+//         let y = Math.sin(x);
+//         console.log(x);
+//         console.log(typeof x);
+//         console.log(y);
+//         console.log(typeof y);
+//         svg.style.stroke = 'blue';
+//         svg.path = 'L' + x +' ' + y;
+//     }
+// }
