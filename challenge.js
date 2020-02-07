@@ -53,32 +53,33 @@ document.write(`<br>`);
 document.write(`Matrix B after sort  ${D}`);
 document.write(`<br>`);
 document.write(`++++++++++++++++`);
+    //
     // for (let b = arr.length-1; b >= 0; --b) {
     //     if(arr[b-1] >= arr[b]){
     //         let t = arr[b-1];
     //         arr[b-1] = arr[b];
     //         arr[b] = t;
     //     }
-    // }
-    // document.write(`Изменения в масиве: ${arr}<br>`);
-// });
-//  let sortMat = function (arr) {
-//     arr.forEach(function(item, i, arr) {
-//         for (i = 0; i <arr.length; i++) {
-//             let m = arr[i];
-//             for (let j = 0; j < m.length; j++) {
-//                 m.sort((a, b) =>
-//                     // I don't know why it's work correct
-//                     a[j] - b[j]
-//                 )
-//             }
-//         }
-//     });
-//      return arr;
-//
-//  };
-//
-// let aSort = sortMat(A);
+    //     document.write(`Изменения в масиве: ${arr}<br>`);
+    // };
+
+ let sortMat = function (arr) {
+    arr.forEach(function(item, i, arr) {
+        for (i = 0; i <arr.length; i++) {
+            let m = arr[i];
+            for (let j = 0; j < m.length; j++) {
+                m.sort((a, b) =>
+                    // I don't know why it's work correct
+                    a[j] - b[j]
+                )
+            }
+        }
+    });
+     return arr;
+
+ };
+
+let aSort = sortMat(A);
 // // console.log(aSort[0][0]);
 // let bSort = sortMat(B);
 
