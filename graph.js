@@ -43,21 +43,6 @@ let cet1 = AA(D);
 
 let decNumb = 15;
 
-function justTest (val) {
-    if(val === '-')
-    {
-        if (decNumb > 0) { decNumb -= 10; }
-    } else {
-        decNumb += 10;
-    }
-
-    let cordinates = createXY(net,cet,decNumb);
-    let cordinates1 = createXY(net1,cet1,decNumb);
-
-    myline(cordinates);
-    myline1(cordinates1);
-}
-
 function createXY(arr1,arr2,decNumb) {
 
     console.log('arr1',arr1);
@@ -77,17 +62,17 @@ function createXY(arr1,arr2,decNumb) {
 let width = 400,
     height = 400;
 
-    let svg = d3.select("body")
-        .append("svg")
-        .attr("width", width)
-        .attr("height",height);
+let svg = d3.select("body")
+    .append("svg")
+    .attr("width", width)
+    .attr("height",height);
 
-    let bod =svg.append("rect")
-            .attr("x",0)
-            .attr("y",0)
-            .attr("width",width)
-            .attr("height",height)
-            .attr("fill", "aqua");
+let bod =svg.append("rect")
+    .attr("x",0)
+    .attr("y",0)
+    .attr("width",width)
+    .attr("height",height)
+    .attr("fill", "aqua");
 
 // Create scale X
 let scale = d3.scaleLinear()
@@ -124,14 +109,16 @@ let lineFunc = d3.line()
     .x(function(d) { return d.x })
     .y(function(d) { return d.y });
 
+dates = [50,375,
+    150,375 ,150,325, 250,325, 250,375];
+
 // Create lines
-let myline =  function (data){
-    svg.append("path")
-    .attr('d', lineFunc(data))
+let myline =  function (){
+    svg.append("polyline")
+    .attr("points",dates)
     .attr('stroke', 'yellow')
-    .style("stroke-width", 2.5)
-    .style("stroke-linejoin", "round")
-    .attr('fill', 'none');
+    .style("stroke-width", 5)
+        .attr('fill',"none");
 };
 
 let myline1 =  function (data){
@@ -143,11 +130,31 @@ let myline1 =  function (data){
         .attr('fill', 'none');
 };
 
-let cordinates = createXY(net,cet,decNumb);
-let cordinates1 = createXY(net1,cet1,decNumb);
+function clearGraph() {
+    d3.selectAll('polyline').remove();
+    // let s = d3.select("path");
+    // s.selectAll("*").remove();
+}
 
-myline(cordinates);
-myline1(cordinates1);
+function justTest (val) {
+    clearGraph();
+    if(val === '-')
+    {
+
+        if (decNumb > 0) {
+            decNumb -= 10;
+        }
+    } else {
+        decNumb += 10;
+    }
+
+    let cordinates = createXY(net,cet,decNumb);
+    let cordinates1 = createXY(net1,cet1,decNumb);
+
+    myline(cordinates);
+    myline1(cordinates1);
+}
+
 // function for find cursor
 
 // function init() {
@@ -168,5 +175,3 @@ myline1(cordinates1);
 //     document.getElementById('xy').innerHTML = "x = " + mouse_x + ", y = " + mouse_y;
 // }
 // init();
-//
-//
