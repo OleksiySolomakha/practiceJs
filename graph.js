@@ -50,10 +50,12 @@ function createXY(arr1,arr2,decNumb) {
     console.log('arr2',arr2);
     let c = [];
     for (let i = 0; i < arr1.length && arr2.length; i++) {
-            let ob = {};
-            ob.x = arr1[i] * decNumb;
-            ob.y = arr2[i] * decNumb;
-            c.push(ob);
+            let a = [];
+            a[0] = arr1[i] * decNumb;
+            console.log('a[0]', a[0]);
+            a[1] = arr2[i] * decNumb;
+            console.log('a[1]', a[1]);
+            c.push(a);
         }
     console.log('c', c);
     return c;
@@ -74,86 +76,123 @@ let bod =svg.append("rect")
     .attr("height",height)
     .attr("fill", "aqua");
 
-// Create scale X
-let scale = d3.scaleLinear()
-    .domain([0, d3.max(net)])
-    .range([0, 380]);
+function Axises() {
+    // Create scale X
+    let scale = d3.scaleLinear()
+        .domain([0, d3.max(net)])
+        .range([0, 380]);
 
 // Add scales to axis
-let x_axis = d3.axisBottom()
-    .scale(scale);
+    let x_axis = d3.axisBottom()
+        .scale(scale);
 
 //Append group and insert axis
 
-let xAxisTranslate = height - 20;
+    let xAxisTranslate = height - 20;
 
-svg.append("g")
-    .attr("transform", "translate(5, " + xAxisTranslate  +")")
-    .call(x_axis);
+    svg.append("g")
+        .attr("transform", "translate(5, " + xAxisTranslate  +")")
+        .call(x_axis);
 
 // Create scale Y
-let scaleY = d3.scaleLinear()
-    .domain([0, d3.max(cet)])
-    .range([380, 0]);
+    let scaleY = d3.scaleLinear()
+        .domain([0, d3.max(cet)])
+        .range([380, 0]);
 
 // Add scales to axis
-let y_axis = d3.axisRight()
-    .scale(scaleY);
+    let y_axis = d3.axisRight()
+        .scale(scaleY);
 
 // Append group and insert axis
-svg.append("g")
-    .attr("transform", "translate(5, 10)")
-    .call(y_axis);
+    svg.append("g")
+        .attr("transform", "translate(5, 10)")
+        .call(y_axis);
+}
 
 let lineFunc = d3.line()
     .x(function(d) { return d.x })
     .y(function(d) { return d.y });
 
-dates = [50,375,
-    150,375 ,150,325, 250,325, 250,375];
-
 // Create lines
-let myline =  function (){
+let myline =  function (data){
     svg.append("polyline")
-    .attr("points",dates)
+    .attr("points", data )
     .attr('stroke', 'yellow')
     .style("stroke-width", 5)
-        .attr('fill',"none");
+    .style("stroke-linejoin", "round")
+    .attr('fill',"none");
 };
 
 let myline1 =  function (data){
-    svg.append("path")
-        .attr('d', lineFunc(data))
+    svg.append("polyline")
+        .attr("points", data )
         .attr('stroke', 'silver')
-        .style("stroke-width", 2.5)
+        .style("stroke-width", 3.5)
         .style("stroke-linejoin", "round")
         .attr('fill', 'none');
 };
 
-function clearGraph() {
+function clearAll() {
+    d3.selectAll('g').remove();
     d3.selectAll('polyline').remove();
-    // let s = d3.select("path");
-    // s.selectAll("*").remove();
+}
+
+function changeAxis() {
+
 }
 
 function justTest (val) {
+    Axises();
     clearGraph();
     if(val === '-')
     {
-
         if (decNumb > 0) {
-            decNumb -= 10;
+            decNumb -= 5;
+            if (decNumb <= 0){
+                alert('Min size for this Graphic');
+                decNumb = 15;
+            }
         }
     } else {
-        decNumb += 10;
+        decNumb += 5;
+        if (decNumb >=30){
+            alert('Max size for this Graphic');
+            decNumb = 15;
+        }
     }
-
     let cordinates = createXY(net,cet,decNumb);
     let cordinates1 = createXY(net1,cet1,decNumb);
 
     myline(cordinates);
     myline1(cordinates1);
 }
+
+function createGraph(){
+    clearGraph();
+    Axises();
+    if(val === '-')
+    {
+        if (decNumb > 0) {
+            decNumb -= 5;
+            if (decNumb <= 0){
+                alert('Min size for this Graphic');
+                decNumb = 15;
+            }
+        }
+    } else {
+        decNumb += 5;
+        if (decNumb >=30){
+            alert('Max size for this Graphic');
+            decNumb = 15;
+        }
+    }
+    let cordinates = createXY(net,cet,decNumb);
+    let cordinates1 = createXY(net1,cet1,decNumb);
+
+    myline(cordinates);
+    myline1(cordinates1);
+}
+
 
 // function for find cursor
 
