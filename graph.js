@@ -61,20 +61,22 @@ function createXY(arr1,arr2,decNumb) {
     return c;
 }
 
-let width = 400,
-    height = 400;
+let width = 420,
+    height = 420;
 
-let svg = d3.select("body")
-    .append("svg")
-    .attr("width", width)
-    .attr("height",height);
 
-let bod =svg.append("rect")
-    .attr("x",0)
-    .attr("y",0)
-    .attr("width",width)
-    .attr("height",height)
-    .attr("fill", "aqua");
+let svg = d3.select('body')
+    .append('svg')
+    .attr('width', width)
+    .attr('height',height)
+    .attr('class', 'axis');
+
+let bod =svg.append('rect')
+    .attr('x',0)
+    .attr('y',0)
+    .attr('width',width)
+    .attr('height',height)
+    .attr('fill', 'aqua');
 
 function Axises() {
     // Create scale X
@@ -90,8 +92,9 @@ function Axises() {
 
     let xAxisTranslate = height - 20;
 
-    svg.append("g")
-        .attr("transform", "translate(5, " + xAxisTranslate  +")")
+    svg.append('g')
+        .attr('class','axisX')
+        .attr('transform', 'translate(25, ' + xAxisTranslate  +')')
         .call(x_axis);
 
 // Create scale Y
@@ -100,14 +103,38 @@ function Axises() {
         .range([380, 0]);
 
 // Add scales to axis
-    let y_axis = d3.axisRight()
+    let y_axis = d3.axisLeft()
         .scale(scaleY);
 
 // Append group and insert axis
-    svg.append("g")
-        .attr("transform", "translate(5, 10)")
+    svg.append('g')
+        .attr('class','axisY')
+        .attr('transform', 'translate(25, 20)')
         .call(y_axis);
 }
+
+function changeAxis() {
+
+    // создаем набор вертикальных линий для сетки
+    d3.selectAll('g')
+        .append('line') // добавляем линию
+        .classed('grid-line', true) // добавляем класс
+        .attr('stroke', 'red')
+        .attr('x1', 0)
+        .attr('y1', 0)
+        .attr('x2', 0)
+        .attr('y2', height-800);
+
+// рисуем горизонтальные линии
+    d3.selectAll('g')
+        .append('line')
+        .classed('grid-line', true)
+        .attr('stroke', 'red')
+        .attr('x1', 0)
+        .attr('y1', 0)
+        .attr('x2', width-40)
+        .attr('y2', 0);
+};
 
 let lineFunc = d3.line()
     .x(function(d) { return d.x })
@@ -115,20 +142,22 @@ let lineFunc = d3.line()
 
 // Create lines
 let myline =  function (data){
-    svg.append("polyline")
-    .attr("points", data )
+    svg.append('polyline')
+    .attr('transform', 'translate(20, 0)')
+    .attr('points', data )
     .attr('stroke', 'yellow')
-    .style("stroke-width", 5)
-    .style("stroke-linejoin", "round")
-    .attr('fill',"none");
+    .style('stroke-width', 5)
+    .style('stroke-linejoin', 'round')
+    .attr('fill','none');
 };
 
 let myline1 =  function (data){
-    svg.append("polyline")
-        .attr("points", data )
-        .attr('stroke', 'silver')
-        .style("stroke-width", 3.5)
-        .style("stroke-linejoin", "round")
+    svg.append('polyline')
+        .attr('points', data )
+        .attr('transform', 'translate(20, 0)')
+        .attr('stroke', 'green')
+        .style('stroke-width', 3.5)
+        .style('stroke-linejoin', 'round')
         .attr('fill', 'none');
 };
 
@@ -137,12 +166,11 @@ function clearAll() {
     d3.selectAll('polyline').remove();
 }
 
-function changeAxis() {
-
+function clearGraph() {
+    d3.selectAll('polyline').remove();
 }
 
-function justTest (val) {
-    Axises();
+function createGraph(val){
     clearGraph();
     if(val === '-')
     {
@@ -153,33 +181,7 @@ function justTest (val) {
                 decNumb = 15;
             }
         }
-    } else {
-        decNumb += 5;
-        if (decNumb >=30){
-            alert('Max size for this Graphic');
-            decNumb = 15;
-        }
-    }
-    let cordinates = createXY(net,cet,decNumb);
-    let cordinates1 = createXY(net1,cet1,decNumb);
-
-    myline(cordinates);
-    myline1(cordinates1);
-}
-
-function createGraph(){
-    clearGraph();
-    Axises();
-    if(val === '-')
-    {
-        if (decNumb > 0) {
-            decNumb -= 5;
-            if (decNumb <= 0){
-                alert('Min size for this Graphic');
-                decNumb = 15;
-            }
-        }
-    } else {
+    } if (val === '+') {
         decNumb += 5;
         if (decNumb >=30){
             alert('Max size for this Graphic');
@@ -210,7 +212,7 @@ function createGraph(){
 //         mouse_x = event.clientX;
 //         mouse_y = event.clientY;
 //     }
-//     status = "x = " + mouse_x + ", y = " + mouse_y;
-//     document.getElementById('xy').innerHTML = "x = " + mouse_x + ", y = " + mouse_y;
+//     status = 'x = ' + mouse_x + ', y = ' + mouse_y;
+//     document.getElementById('xy').innerHTML = 'x = ' + mouse_x + ', y = ' + mouse_y;
 // }
 // init();

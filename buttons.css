@@ -1,0 +1,27 @@
+body {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.button {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 45%;
+    height: 30px;
+    margin: auto;
+}
+
+button {
+    width: auto;
+    margin: auto;
+    font-size: 15px;
+    font-family: Roboto, serif;
+}
+
+svg {
+   margin: auto;
+}
