@@ -3,6 +3,8 @@ body {
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
+    font-size: 15px;
+    font-family: Roboto, serif;
 }
 
 .button {
@@ -18,10 +20,28 @@ body {
 button {
     width: auto;
     margin: auto;
-    font-size: 15px;
-    font-family: Roboto, serif;
+
 }
 
 svg {
    margin: auto;
+}
+
+.text {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin: auto;
+}
+
+.parameter {
+    margin: auto;
+}
+
+textarea {
+    margin: auto;
+}
+
+p {
+    margin: auto;
+    padding: 15px;
 }

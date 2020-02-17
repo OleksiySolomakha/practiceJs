@@ -216,3 +216,5 @@ function createGraph(val){
 //     document.getElementById('xy').innerHTML = 'x = ' + mouse_x + ', y = ' + mouse_y;
 // }
 // init();
+
+// export { myline, myline1 } from 'graph';
