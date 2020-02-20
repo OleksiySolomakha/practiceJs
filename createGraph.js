@@ -1,23 +1,54 @@
-// import {myline, myline1} from 'graph';
 
-let tes = document.createElement('p');
-tes.innerText = 'Write new parameters';
-document.body.appendChild(tes);
 
-let first = document.createElement('div');
-let second = document.createElement('div');
+function getParameter(){
 
-function createOne(inputClass) {
-    // let z = document.createElement(`${inputClass}`);
-    for( let i = 0; i <= 11; i++ ) {
-        inputClass.textContent = 'text';
-        // let t = document.createTextNode('0');
-        // x.appendChild(t);
-        // document.body.appendChild(x);
+    for(let i =0; i <= 11; i++ ){
+        // document.getElementsByTagName('INPUT')[i].value = `${i}`;
+        let v = document.getElementsByTagName('INPUT')[i].value;
+        console.log('i',i);
+        console.log('parameters from input param 1', v);
+        firstPart.push(v);
     }
+    console.log('firstPart',firstPart);
+    //    SECOND PARAMETERS
+    for(let y = 12; y < 24; y++ ){
+        // document.getElementsByTagName('INPUT')[y].value = `${y}`;
+        let x = document.getElementsByTagName('INPUT')[y].value;
+        console.log('y',y);
+        console.log('parameters from input param 2', x);
+        secondPart.push(x);
+    }
+
+    // for (let i = 0; i <= 24; i++){
+    //     document.getElementsByTagName('textarea')[i].value = `${i}`;
+    //     if (i<=12){
+    //         i++;
+    //         let v = document.getElementsByTagName('textarea')[i].value;
+    //             console.log('i',i);
+    //             console.log('parameters from input param 1', v);
+    //             firstPart.push(v);
+    //     }
+    //     if (i < 24){
+    //         i++;
+    //             let x = document.getElementsByTagName('textarea')[i].value;
+    //             console.log('y',i);
+    //             console.log('parameters from input param 2', x);
+    //             secondPart.push(x);
+    //     }
+    // }
+
+    // console.log('secondPart',secondPart);
+    //
+    // let job = [];
+    //
+    // for(let o = 0; o < firstPart.length && secondPart.length; o++) {
+    //     let jj = [];
+    //     jj[0] = firstPart[o] * decNumb;
+    //     console.log('jj[0]', jj[0]);
+    //     jj[1] = secondPart[o] * decNumb;
+    //     console.log('jj[1]', jj[1]);
+    //     job.push(jj);
+    // }
+    // console.log('job',job);
+    // return job;
 }
-createOne(first);
-let zet = document.createElement('p');
-zet.innerText = 'Next parameter';
-document.body.appendChild(zet);
-createOne(second);

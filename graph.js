@@ -43,6 +43,9 @@ let cet1 = AA(D);
 
 let decNumb = 15;
 
+let firstPart = [];
+let secondPart = [];
+
 function createXY(arr1,arr2,decNumb) {
 
     console.log('arr1',arr1);
@@ -170,6 +173,32 @@ function clearGraph() {
     d3.selectAll('polyline').remove();
 }
 
+let tes = document.createElement('p');
+tes.innerText = 'Write new parameters';
+document.body.appendChild(tes);
+
+let first = document.createElement('div');
+let second = document.createElement('div');
+
+function createOne() {
+    for( let i = 0; i <= 11; i++ ) {
+        let z = document.createElement(`INPUT`);
+        z.setAttribute('type','number');
+        z.className = 'params';
+        z.value = '0';
+        // let t = document.createTextNode('0');
+        // z.appendChild(t);
+        document.body.appendChild(z);
+    }
+}
+createOne();
+let zet = document.createElement('p');
+zet.innerText = 'Next parameter';
+document.body.appendChild(zet);
+createOne(second);
+
+// console.log(document.getElementsByTagName('textarea')[0].value);
+
 function createGraph(val){
     clearGraph();
     if(val === '-')
@@ -188,14 +217,15 @@ function createGraph(val){
             decNumb = 15;
         }
     }
-    let cordinates = createXY(net,cet,decNumb);
-    let cordinates1 = createXY(net1,cet1,decNumb);
+    // let cordinates = createXY(net,cet,decNumb);
+    // let cordinates1 = createXY(net1,cet1,decNumb);
+    let par = createXY(firstPart,secondPart,decNumb);
+    console.log('par',par);
 
-    myline(cordinates);
-    myline1(cordinates1);
+    // myline(cordinates);
+    myline(par);
+    // myline1(cordinates1);
 }
-
-
 // function for find cursor
 
 // function init() {

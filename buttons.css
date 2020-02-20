@@ -45,3 +45,8 @@ p {
     margin: auto;
     padding: 15px;
 }
+
+.params {
+    margin: 5px;
+    width: 150px;
+}
