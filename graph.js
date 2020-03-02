@@ -181,6 +181,7 @@ let first = document.createElement('div');
 let second = document.createElement('div');
 
 function createOne() {
+    // let sup = document.getElementsByClassName('inpParam');
     for( let i = 0; i <= 11; i++ ) {
         let z = document.createElement(`INPUT`);
         z.setAttribute('type','number');
